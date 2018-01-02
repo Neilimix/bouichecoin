@@ -1,4 +1,4 @@
 obj/version.o: version.cpp version.h clientversion.h \
- /home/user/bouichecoin/src/obj/build.h
+ /home/bouiche/bouichecoin/src/obj/build.h
 version.cpp version.h clientversion.h :
- /home/user/bouichecoin/src/obj/build.h :
+ /home/bouiche/bouichecoin/src/obj/build.h :
