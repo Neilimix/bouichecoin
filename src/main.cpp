@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x8328eeee98defb4b4e38c82736b2899734e7e754b31e2f9cb133fda01a7ad224");
+uint256 hashGenesisBlock("0x27973d85b103d3cd8e66d45bced8779f1b452f21653f2929fa190e706e94cfcd");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Bouichecoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2742,11 +2742,11 @@ bool LoadBlockIndex()
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xbc;
-        pchMessageStart[1] = 0xcb;
-        pchMessageStart[2] = 0xb7;
-        pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0x8328eeee98defb4b4e38c82736b2899734e7e754b31e2f9cb133fda01a7ad224");
+        pchMessageStart[0] = 0xb3;
+        pchMessageStart[1] = 0x42;
+        pchMessageStart[2] = 0x27;
+        pchMessageStart[3] = 0xaa;
+        hashGenesisBlock = uint256("0x27973d85b103d3cd8e66d45bced8779f1b452f21653f2929fa190e706e94cfcd");
     }
 
     //
@@ -2779,26 +2779,26 @@ bool InitBlockIndex() {
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "Ici repose le monde";
+        const char* pszTimestamp = "que ce passe il ici";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08bsu601aaa0a470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a42c8f13f8d45b8c857dacbc8bc3a8e1d3eb4b10f4d4604fa08bsu601aaa0a470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1514417348;
+        block.nTime    = 1515166793;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 105785;
+        block.nNonce   = 1148926;
 
         if (fTestNet)
         {
-            block.nTime    = 1514417348;
-            block.nNonce   = 105785;
+            block.nTime    = 1515166793;
+            block.nNonce   = 1148926;
         }
 
         //// debug print
@@ -2806,10 +2806,10 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0xb2733b1d2907d31174aa07391d0fed1d672178bfc1b0ba3bbaf7e201e3aa9738"));
+        assert(block.hashMerkleRoot == uint256("0x90ec80462b8c7f232ce345358afca123c744b3a630c1f50626128dfc7851529c"));
 
 	 // If genesis block hash does not match, then generate new genesis hash.
-        if (false && block.GetHash() != hashGenesisBlock)
+        if (true && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
